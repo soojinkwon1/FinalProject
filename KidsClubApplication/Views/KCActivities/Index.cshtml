@@ -1,0 +1,73 @@
+﻿@model IEnumerable<KidsClubApplication.Models.KCActivity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<!--Page Title-->
+    <section class="page-title" style="background-image:url(images/banner.jpg); border-image-width: 10%;">
+        <div class="auto-container">
+            <div class="inner-container clearfix">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Activities</li>
+                </ul>
+                <h1>Activities</h1>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+    @if (User.IsInRole("Administrator"))
+                 {
+                   <a asp-action="Create">Create New</a>
+                 }
+
+
+
+    <!-- Program Section -->
+    <section class="program-section alternate">
+        <div class="auto-container">
+            <div class="row">
+
+                
+
+
+                
+
+
+            @foreach (var item in Model) {
+            <!-- Program Block -->
+            <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                <div class="inner-box">
+                    <div class="image-box">
+                            <figure class="image"><img src="@Html.DisplayFor(modelItem => item.MediaType)" alt="" style="height:480px"></figure>
+                    </div>
+                    <div class="lower-content" style="height:260px">
+                        <h4><a href="paper-plates-art.html">@Html.DisplayFor(modelItem => item.Title)</a></h4>
+                        <div class="text">@Html.DisplayFor(modelItem => item.Description)</div>
+                            <a href="@Html.DisplayFor(modelItem => item.MediaType)" download class="download-btn"><i class="fa fa-download"></i> Download </a>
+                    </div>
+                        
+                </div>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ActivityId">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.ActivityId">Delete</a>
+                        <a asp-action="Details" asp-route-id="@item.ActivityId">Details</a>
+
+                    }
+            </div>
+            }               
+            </div>
+        </div>
+    </section>
+    <!--End Program Section -->
+
+
+
+
+                            

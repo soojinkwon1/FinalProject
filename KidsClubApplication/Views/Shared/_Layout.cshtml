@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - KidsClubApplication</title>
+    <!-- Stylesheets -->
+<link href="~/css/bootstrap.css" rel="stylesheet">
+<link href="~/css/style.css" rel="stylesheet">
+<link href="~/css/responsive.css" rel="stylesheet">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+
+
+
+</head>
+<body>
+ <header>
+   
+       <div class="fixed-header">
+                <div class="auto-container clearfix">
+                    
+                       
+                          <nav class="main-menu">
+                            <div class="navbar-collapse show collapse clearfix">
+                                <div class="logo pull-left">
+                                      <a><img src="~/images/logo.png" style="width: 100px;"></a>
+                                     </div>
+                                <ul class="navigation clearfix" style="font-size:22px">
+                                    
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="About" asp-action="Index">About</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="Events" asp-action="Index">Event</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="Galleries" asp-action="Index">Gallery</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="KCActivities" asp-action="Index">Activities</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="EventBook" asp-action="Index">EventBook</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="CalendarEvents" asp-action="Index">Calendar</a></li>
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="Admin" asp-action="BookedMessage">Booked Event</a></li>
+                                    }
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="Admin" asp-action="Messages">Contact Messages</a></li>
+                                    }
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" style="font-size:20px" asp-area="" asp-controller="Admin" asp-action="SuMessages">Subscribe</a></li>
+                                    }
+                                    <partial name="_LoginPartial" />
+
+                                </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        
+
+ </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    
+
+
+<!--Main Footer-->
+    <footer class="main-footer">
+    	<div class="anim-icons">
+    		<span class="icon icon-sparrow wow zoomIn" data-wow-delay="400ms"></span>
+    		<span class="icon icon-rainbow-2 wow zoomIn" data-wow-delay="800ms"></span>
+    		<span class="icon icon-star-3"></span>
+    		<span class="icon icon-star-3 two"></span>
+    		<span class="icon icon-sun"></span>
+    		<span class="icon icon-plane wow zoomIn" data-wow-delay="1200ms"></span>
+    	</div>
+
+    	<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon icon-arrow-up"></span></div>
+
+
+
+<!--Newsleter Section-->
+<section class="newsletter-section">
+    <div class="auto-container">
+    <div class="inner-container">
+    <div class="row clearfix">
+    <!--Title Column-->
+    <div class="title-column col-lg-5 col-md-12 col-sm-12">
+    <div class="inner-column">
+    <span class="title">Subsribe Us</span>
+    <h3>Don’t miss our daily updates</h3>
+    </div>
+    </div>
+    <!--Form Column-->
+    <div class="form-column col-lg-7 col-md-12 col-sm-12">
+    <div class="inner-column">
+    <!--Subscribe Form-->
+    <div class="subscribe-form">
+    <form asp-controller="About" asp-action="SubscribeMessage" method="post">
+    <div class="form-group">
+    <input type="email" class="form-control" id="Email" name="Email" placeholder="name@example.com">
+    <label for="Email">Email address</label>
+    <button type="submit" class="theme-btn btn-style-one text-uppercase" name="submit-form">subscribe</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <!--End Newsleter Section-->
+        
+
+        <!--Footer Bottom-->
+    <div class="footer-bottom">
+        <div class="auto-container">
+            <ul class="social-icon-colored">
+                <li><a href="https://www.facebook.com/southlandkaiviti.kidsclub"><span class="fab fa-facebook-f"></span></a></li>
+                <li><a href="mailto: [southlandkaivitkidsclub@gmail.com?subject= &body="><span class="fa fa-envelope"></span></a></li>
+                <li><a href="tel:+642 249 6610 9"><span class="fa fa-phone"></span></a></li>
+            </ul>
+            <div class="copyright"> Copyrights &copy; 2022 Southland Kai Viti Kids Club</div>
+        </div>
+    </div>
+    </footer>
+    <!--End Main Footer-->
+
+</div>
+<!--End pagewrapper-->
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+<script src="~/js/jquery.js"></script>
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery-ui.js"></script>
+<script src="~/js/jquery.fancybox.js"></script>
+<script src="~/js/owl.js"></script>
+<script src="~/js/wow.js"></script>
+<script src="~/js/appear.js"></script>
+<script src="~/js/parallax.min.js"></script>
+<script src="~/js/script.js"></script>
+
+</body>
+</html>
